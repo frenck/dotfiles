@@ -18,7 +18,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
 	# Install essentials for further installation
 	brew update
-	brew upgrade
+	brew upgrade --overwrite
 	brew install cmake coreutils git
 fi
 
@@ -38,7 +38,7 @@ ${chezmoi} init --apply --source="${script_dir}"
 if [[ "$(uname)" == "Darwin" ]]; then
 	brew install rtx
 elif [[ "${CODESPACES:-}" == "true" ]]; then
-	sh -c "$(curl -fsSL curl https://rtx.pub/install.sh)"
+	curl https://rtx.pub/rtx-latest-linux-x64 >/usr/local/bin/rtx
 else
 	sudo install -dm 755 /etc/apt/keyrings
 	wget -qO - https://rtx.pub/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/rtx-archive-keyring.gpg 1>/dev/null
