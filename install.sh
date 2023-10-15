@@ -37,7 +37,7 @@ ${chezmoi} init --apply --source="${script_dir}"
 # Install rtx
 if [[ "$(uname)" == "Darwin" ]]; then
 	brew install rtx
-elif [[ "$CODESPACE" == "true" ]]; then
+elif [[ "${CODESPACES:-}" == "true" ]]; then
 	sh -c "$(curl -fsSL curl https://rtx.pub/install.sh)"
 else
 	sudo install -dm 755 /etc/apt/keyrings
