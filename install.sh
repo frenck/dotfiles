@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eu
 
-if command -v curl >/dev/null; then
+if ! command -v curl >/dev/null; then
 	echo "You must have curl installed."
 	exit 1
 fi
