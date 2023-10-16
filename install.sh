@@ -41,6 +41,7 @@ ${chezmoi} init --apply --source="${script_dir}"
 # Install rtx
 if [[ "$(uname)" == "Darwin" ]]; then
 	brew install rtx
+	rtx="$(brew --prefix rtx)/bin/rtx"
 elif [[ "${CODESPACES:-}" == "true" ]]; then
 	curl https://rtx.pub/rtx-latest-linux-x64 >"${bin_dir}/rtx"
 	chmod a+x "${bin_dir}/rtx"
